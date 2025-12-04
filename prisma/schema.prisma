@@ -88,12 +88,13 @@ model OrdenTrabajo {
   descripcion_sintoma  String?   @db.Text
   trabajo_realizado    String?   @db.Text
   repuestos_utilizados String?   @db.Text
-  id_creador           Int
+  id_creador           Int?      
 
   equipo     Equipo        @relation(fields: [id_equipo], references: [id_equipo])
-  creador    Usuario       @relation("OT_Creador", fields: [id_creador], references: [id_usuario])
+  creador    Usuario?      @relation("OT_Creador", fields: [id_creador], references: [id_usuario], onDelete: SetNull)
   evidencias EvidenciaOT[]
 }
+
 
 model EvidenciaOT {
   id_evidencia Int      @id @default(autoincrement())

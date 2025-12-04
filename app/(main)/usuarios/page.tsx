@@ -1,4 +1,3 @@
-// app/(main)/usuarios/page.tsx
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
@@ -6,17 +5,24 @@ import UsuariosClient from "./UsuariosClient";
 
 export default async function UsuariosPage() {
   const session = await getSession();
-
   if (!session) {
     redirect("/login");
   }
 
-  // 👇 BLOQUEO POR ROL: solo "Jefe" puede entrar a Usuarios
   if (!session.roles.includes("Jefe")) {
-    redirect("/"); // o a la ruta que quieras como inicio del técnico
+    redirect("/");
   }
 
   const usuarios = await prisma.usuario.findMany({
+    where: {
+      // 👇 NO traer el usuario admin
+      email: {
+        not: "admin@admin.cl",
+      },
+      nombre: {
+        not: "Admin",
+      },
+    },
     include: {
       roles: {
         include: { rol: true },
@@ -36,4 +42,3 @@ export default async function UsuariosPage() {
 
   return <UsuariosClient usuarios={usuariosDTO} />;
 }
-

@@ -185,6 +185,15 @@ export async function DELETE(req: Request) {
       );
     }
 
+        // No permitir borrar al usuario admin
+    if (user.nombre === "Admin" && user.email === "admin@admin.cl") {
+      return NextResponse.json(
+        { error: "No se puede eliminar el usuario administrador inicial." },
+        { status: 400 }
+      );
+    }
+
+
     await prisma.usuarioRol.deleteMany({
       where: { id_usuario: idNum },
     });

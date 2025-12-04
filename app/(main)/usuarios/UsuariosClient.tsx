@@ -330,7 +330,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           onClick={abrirModalCrear}
           className="px-4 py-2 rounded bg-blue-600 text-white"
         >
-          Añadir
+          Añadir usuario
         </button>
 
         <input
@@ -417,7 +417,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               <tr key={u.id} className="border-t">
                 <td className="px-4 py-2">{u.id}</td>
                 <td className="px-4 py-2">
-                  {u.nombre} {u.apellido}
+                  {u.nombre} {u.apellido}1
                 </td>
 
                 {/* EMAIL */}
@@ -427,10 +427,18 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <button
                       type="button"
                       onClick={() => abrirModal(u, "email")}
-                      className="text-xs underline"
+                      className="p-1 text-yellow-500 hover:text-yellow-600"
                       title="Editar correo"
                     >
-                      ✏️
+                   <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
+                        <path fillRule="evenodd" d="M4 15a1 1 0 011-1h3l8-8-3-3-8 8v3a1 1 0 01-1 1H4z" clipRule="evenodd"/>
+                      </svg>
                     </button>
                   </div>
                 </td>
@@ -442,10 +450,18 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <button
                       type="button"
                       onClick={() => abrirModal(u, "telefono")}
-                      className="text-xs underline"
+                      className="p-1 text-yellow-500 hover:text-yellow-600"
                       title="Editar teléfono"
                     >
-                      ✏️
+                                          <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
+                        <path fillRule="evenodd" d="M4 15a1 1 0 011-1h3l8-8-3-3-8 8v3a1 1 0 01-1 1H4z" clipRule="evenodd"/>
+                      </svg>
                     </button>
                   </div>
                 </td>

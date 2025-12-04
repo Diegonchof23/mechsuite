@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     if (!user.activo) {
       return NextResponse.json(
-        { error: "Usuario inactivo" },
+        { error: "Su cuenta está desactivada. Contactese con el gerente." },
         { status: 403 }
       );
     }
